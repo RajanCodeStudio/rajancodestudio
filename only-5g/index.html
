@@ -1,196 +1,218 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Only 5G Tools</title>
+    
+    <!-- Google Fonts (Roboto) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
 
-export default function PrivacyPolicy() {
-  const lastUpdated = "July 30, 2026";
+    <!-- React 18 & Babel CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin: 0; padding: 0; background-color: #141218;">
+    <div id="root"></div>
 
-  return (
-    <div style={styles.pageBackground}>
-      {/* Material 3 Top App Bar Container */}
-      <header style={styles.topAppBar}>
-        <h1 style={styles.appTitle}>Only 5G Tools</h1>
-        <p style={styles.appSubtitle}>Privacy Policy</p>
-      </header>
+    <script type="text/babel">
+        function PrivacyPolicy() {
+          const lastUpdated = "July 30, 2026";
 
-      {/* Main Content Area */}
-      <main style={styles.container}>
-        <div style={styles.metaBadge}>
-          <span>Last Updated: {lastUpdated}</span>
-        </div>
+          return (
+            <div style={styles.pageBackground}>
+              {/* Material 3 Top App Bar Container */}
+              <header style={styles.topAppBar}>
+                <h1 style={styles.appTitle}>Only 5G Tools</h1>
+                <p style={styles.appSubtitle}>Privacy Policy</p>
+              </header>
 
-        {/* Section 1: Overview */}
-        <section style={styles.sectionGroup}>
-          <h2 style={styles.sectionHeader}>OVERVIEW</h2>
-          <div style={styles.m3Card}>
-            <p style={styles.cardText}>
-              <strong>Only 5G Tools</strong> ("we", "our", or "us") respects your privacy. This Privacy Policy explains how our Android application handles network status monitoring and hidden 5G network settings access. We are committed to transparency and ensuring your personal data remains strictly safe.
-            </p>
-          </div>
-        </section>
+              {/* Main Content Area */}
+              <main style={styles.container}>
+                <div style={styles.metaBadge}>
+                  <span>Last Updated: {lastUpdated}</span>
+                </div>
 
-        {/* Section 2: Data Collection & Storage */}
-        <section style={styles.sectionGroup}>
-          <h2 style={styles.sectionHeader}>DATA COLLECTION & STORAGE</h2>
-          <div style={styles.m3Card}>
-            <p style={styles.cardText}>
-              <strong>We do not collect, store, transmit, or monetize any personal data.</strong>
-            </p>
-            <ul style={styles.list}>
-              <li style={styles.listItem}>No personal identifiers (Name, Email, Phone Number) are requested or stored.</li>
-              <li style={styles.listItem}>No network traffic logs or browsing history are monitored or sent to remote servers.</li>
-              <li style={styles.listItem}>All network status calculations happen 100% locally on your Android device.</li>
-            </ul>
-          </div>
-        </section>
+                {/* Section 1: Overview */}
+                <section style={styles.sectionGroup}>
+                  <h2 style={styles.sectionHeader}>OVERVIEW</h2>
+                  <div style={styles.m3Card}>
+                    <p style={styles.cardText}>
+                      <strong>Only 5G Tools</strong> ("we", "our", or "us") respects your privacy. This Privacy Policy explains how our Android application handles network status monitoring and hidden 5G network settings access. We are committed to transparency and ensuring your personal data remains strictly safe.
+                    </p>
+                  </div>
+                </section>
 
-        {/* Section 3: App Permissions Explained */}
-        <section style={styles.sectionGroup}>
-          <h2 style={styles.sectionHeader}>PERMISSIONS EXPLAINED</h2>
-          <div style={styles.m3Card}>
-            <p style={styles.cardText}>
-              Our application requests specific system permissions strictly required for core operational functions:
-            </p>
-            <div style={styles.permissionBox}>
-              <h3 style={styles.permTitle}>Network & Wi-Fi Access</h3>
-              <p style={styles.permDesc}>
-                <code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>, <code>ACCESS_WIFI_STATE</code>: Used to detect real-time internet connectivity, Wi-Fi SSID, and active network types (4G / 5G / Wi-Fi).
-              </p>
+                {/* Section 2: Data Collection & Storage */}
+                <section style={styles.sectionGroup}>
+                  <h2 style={styles.sectionHeader}>DATA COLLECTION & STORAGE</h2>
+                  <div style={styles.m3Card}>
+                    <p style={styles.cardText}>
+                      <strong>We do not collect, store, transmit, or monetize any personal data.</strong>
+                    </p>
+                    <ul style={styles.list}>
+                      <li style={styles.listItem}>No personal identifiers (Name, Email, Phone Number) are requested or stored.</li>
+                      <li style={styles.listItem}>No network traffic logs or browsing history are monitored or sent to remote servers.</li>
+                      <li style={styles.listItem}>All network status calculations happen 100% locally on your Android device.</li>
+                    </ul>
+                  </div>
+                </section>
+
+                {/* Section 3: App Permissions Explained */}
+                <section style={styles.sectionGroup}>
+                  <h2 style={styles.sectionHeader}>PERMISSIONS EXPLAINED</h2>
+                  <div style={styles.m3Card}>
+                    <p style={styles.cardText}>
+                      Our application requests specific system permissions strictly required for core operational functions:
+                    </p>
+                    <div style={styles.permissionBox}>
+                      <h3 style={styles.permTitle}>Network & Wi-Fi Access</h3>
+                      <p style={styles.permDesc}>
+                        <code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>, <code>ACCESS_WIFI_STATE</code>: Used to detect real-time internet connectivity, Wi-Fi SSID, and active network types (4G / 5G / Wi-Fi).
+                      </p>
+                    </div>
+                    <div style={styles.permissionBox}>
+                      <h3 style={styles.permTitle}>Cellular & SIM State</h3>
+                      <p style={styles.permDesc}>
+                        <code>READ_PHONE_STATE</code>, <code>READ_BASIC_PHONE_STATE</code>: Required to read mobile signal strength levels (5-bar indicator) and carrier names (e.g., Jio 5G, Airtel 5G).
+                      </p>
+                    </div>
+                    <div style={styles.permissionBox}>
+                      <h3 style={styles.permTitle}>Location Access</h3>
+                      <p style={styles.permDesc}>
+                        <code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>: Android system architecture mandates location permission to read cell tower information and Wi-Fi network names. We <strong>never</strong> record or track your physical GPS location.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Section 4: Third-Party Analytics & Ads */}
+                <section style={styles.sectionGroup}>
+                  <h2 style={styles.sectionHeader}>THIRD-PARTY SERVICES</h2>
+                  <div style={styles.m3Card}>
+                    <p style={styles.cardText}>
+                      Our application does not integrate third-party data tracking, user profiling, or intrusive advertising SDKs. Your operational usage remains completely private to your local device session.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Section 5: Policy Updates & Contact */}
+                <section style={styles.sectionGroup}>
+                  <h2 style={styles.sectionHeader}>CONTACT & INQUIRIES</h2>
+                  <div style={styles.m3Card}>
+                    <p style={styles.cardText}>
+                      If you have any questions or concerns regarding this Privacy Policy, feel free to contact us:
+                    </p>
+                    <p style={{ ...styles.cardText, marginTop: '8px', fontWeight: 'bold' }}>
+                      Email: rk5486839@gmail.com
+                    </p>
+                  </div>
+                </section>
+              </main>
             </div>
-            <div style={styles.permissionBox}>
-              <h3 style={styles.permTitle}>Cellular & SIM State</h3>
-              <p style={styles.permDesc}>
-                <code>READ_PHONE_STATE</code>, <code>READ_BASIC_PHONE_STATE</code>: Required to read mobile signal strength levels (5-bar indicator) and carrier names (e.g., Jio 5G, Airtel 5G).
-              </p>
-            </div>
-            <div style={styles.permissionBox}>
-              <h3 style={styles.permTitle}>Location Access</h3>
-              <p style={styles.permDesc}>
-                <code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>: Android system architecture mandates location permission to read cell tower information and Wi-Fi network names. We <strong>never</strong> record or track your physical GPS location.
-              </p>
-            </div>
-          </div>
-        </section>
+          );
+        }
 
-        {/* Section 4: Third-Party Analytics & Ads */}
-        <section style={styles.sectionGroup}>
-          <h2 style={styles.sectionHeader}>THIRD-PARTY SERVICES</h2>
-          <div style={styles.m3Card}>
-            <p style={styles.cardText}>
-              Our application does not integrate third-party data tracking, user profiling, or intrusive advertising SDKs. Your operational usage remains completely private to your local device session.
-            </p>
-          </div>
-        </section>
+        const styles = {
+          pageBackground: {
+            backgroundColor: '#141218',
+            color: '#E6E0E9',
+            fontFamily: 'Roboto, system-ui, -apple-system, sans-serif',
+            minHeight: '100vh',
+            paddingBottom: '40px',
+            margin: 0
+          },
+          topAppBar: {
+            backgroundColor: '#2B2930',
+            padding: '24px 20px',
+            borderBottom: '1px solid #49454F',
+            textAlign: 'center'
+          },
+          appTitle: {
+            margin: 0,
+            fontSize: '24px',
+            fontWeight: '700',
+            color: '#D0BCFF'
+          },
+          appSubtitle: {
+            margin: '4px 0 0 0',
+            fontSize: '14px',
+            color: '#CAC4D0'
+          },
+          container: {
+            maxWidth: '680px',
+            margin: '0 auto',
+            padding: '20px 16px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px'
+          },
+          metaBadge: {
+            alignSelf: 'flex-start',
+            backgroundColor: '#332D41',
+            color: '#E8DEF8',
+            padding: '6px 12px',
+            borderRadius: '8px',
+            fontSize: '12px',
+            fontWeight: '500'
+          },
+          sectionGroup: {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px'
+          },
+          sectionHeader: {
+            fontSize: '11px',
+            fontWeight: '700',
+            letterSpacing: '1.2px',
+            color: '#D0BCFF',
+            margin: '0 0 0 4px',
+            textTransform: 'uppercase'
+          },
+          m3Card: {
+            backgroundColor: '#211F26',
+            borderRadius: '16px',
+            padding: '20px',
+            border: '1px solid #36343B'
+          },
+          cardText: {
+            margin: 0,
+            fontSize: '14px',
+            lineHeight: '20px',
+            color: '#E6E0E9'
+          },
+          list: {
+            margin: '12px 0 0 0',
+            paddingLeft: '20px'
+          },
+          listItem: {
+            fontSize: '13px',
+            lineHeight: '20px',
+            color: '#CAC4D0',
+            marginBottom: '6px'
+          },
+          permissionBox: {
+            marginTop: '12px',
+            paddingTop: '12px',
+            borderTop: '1px solid #36343B'
+          },
+          permTitle: {
+            margin: 0,
+            fontSize: '13px',
+            fontWeight: '600',
+            color: '#D0BCFF'
+          },
+          permDesc: {
+            margin: '4px 0 0 0',
+            fontSize: '12px',
+            lineHeight: '18px',
+            color: '#CAC4D0'
+          }
+        };
 
-        {/* Section 5: Policy Updates & Contact */}
-        <section style={styles.sectionGroup}>
-          <h2 style={styles.sectionHeader}>CONTACT & INQUIRIES</h2>
-          <div style={styles.m3Card}>
-            <p style={styles.cardText}>
-              If you have any questions or concerns regarding this Privacy Policy, feel free to contact us:
-            </p>
-            <p style={{ ...styles.cardText, marginTop: '8px', fontWeight: 'bold' }}>
-              Email: developer@example.com
-            </p>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
-
-// Inline CSS enforcing Material Design 3 (M3) Color Schemes & Elevation Tokens
-const styles = {
-  pageBackground: {
-    backgroundColor: '#141218', // M3 Surface / Background (Dark Theme)
-    color: '#E6E0E9', // M3 On-Surface
-    fontFamily: 'Roboto, system-ui, -apple-system, sans-serif',
-    minHeight: '100vh',
-    paddingBottom: '40px',
-    margin: 0
-  },
-  topAppBar: {
-    backgroundColor: '#2B2930', // M3 Surface Container High
-    padding: '24px 20px',
-    borderBottom: '1px solid #49454F',
-    textAlign: 'center'
-  },
-  appTitle: {
-    margin: 0,
-    fontSize: '24px',
-    fontWeight: '700',
-    color: '#D0BCFF' // M3 Primary Color
-  },
-  appSubtitle: {
-    margin: '4px 0 0 0',
-    fontSize: '14px',
-    color: '#CAC4D0' // M3 On-Surface Variant
-  },
-  container: {
-    maxWidth: '680px',
-    margin: '0 auto',
-    padding: '20px 16px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '20px'
-  },
-  metaBadge: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#332D41',
-    color: '#E8DEF8',
-    padding: '6px 12px',
-    borderRadius: '8px',
-    fontSize: '12px',
-    fontWeight: '500'
-  },
-  sectionGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px'
-  },
-  sectionHeader: {
-    fontSize: '11px',
-    fontWeight: '700',
-    letterSpacing: '1.2px',
-    color: '#D0BCFF', // M3 Primary Color Header
-    margin: '0 0 0 4px',
-    textTransform: 'uppercase'
-  },
-  m3Card: {
-    backgroundColor: '#211F26', // M3 Surface Container
-    borderRadius: '16px', // M3 Medium Shape
-    padding: '20px',
-    border: '1px solid #36343B'
-  },
-  cardText: {
-    margin: 0,
-    fontSize: '14px',
-    lineHeight: '20px',
-    color: '#E6E0E9'
-  },
-  list: {
-    margin: '12px 0 0 0',
-    paddingLeft: '20px'
-  },
-  listItem: {
-    fontSize: '13px',
-    lineHeight: '20px',
-    color: '#CAC4D0',
-    marginBottom: '6px'
-  },
-  permissionBox: {
-    marginTop: '12px',
-    paddingTop: '12px',
-    borderTop: '1px solid #36343B'
-  },
-  permTitle: {
-    margin: 0,
-    fontSize: '13px',
-    fontWeight: '600',
-    color: '#D0BCFF'
-  },
-  permDesc: {
-    margin: '4px 0 0 0',
-    fontSize: '12px',
-    lineHeight: '18px',
-    color: '#CAC4D0'
-  }
-};
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<PrivacyPolicy />);
+    </script>
+</body>
+</html>
