@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Only 5G Tools</title>
-    
-    <!-- Google Fonts (Google Sans & Roboto) & Material Symbols -->
+
+    <!-- Google Material Symbols & Fonts (Material 3) -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <!-- Tailwind CSS (Material 3 Dark Palette Config) -->
+    <!-- Tailwind CSS (Google Material 3 Theme Palette) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -17,22 +17,6 @@
                 extend: {
                     fontFamily: {
                         sans: ['Google Sans', 'Roboto', 'sans-serif'],
-                    },
-                    colors: {
-                        m3: {
-                            bg: '#141218',
-                            surface: '#211F26',
-                            surfaceHigh: '#2B2930',
-                            surfaceVariant: '#36343B',
-                            primary: '#D0BCFF',
-                            onPrimary: '#381E72',
-                            primaryContainer: '#4F378B',
-                            onSurface: '#E6E0E9',
-                            onSurfaceVariant: '#CAC4D0',
-                            outline: '#49454F',
-                            badgeBg: '#332D41',
-                            badgeText: '#E8DEF8'
-                        }
                     }
                 }
             }
@@ -44,39 +28,32 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body class="bg-m3-bg text-m3-onSurface font-sans antialiased min-h-screen">
+<body class="bg-[#F8FDFF] text-[#1F1F1F] font-sans antialiased min-h-screen">
     <div id="root"></div>
 
     <script type="text/babel">
         // =========================================================
         // 1. ATOMS (Google Atomic Design Pattern)
         // =========================================================
-
+        
         // Atom: Material Symbol Icon
         const Icon = ({ name, className = "" }) => (
             <span className={`material-symbols-outlined select-none ${className}`}>{name}</span>
         );
 
-        // Atom: Material 3 Chip / Badge
-        const M3Chip = ({ label, icon }) => (
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-m3-badgeBg text-m3-badgeText text-xs font-medium border border-m3-outline/30">
-                {icon && <Icon name={icon} className="text-sm text-m3-primary" />}
+        // Atom: Material 3 Filter Chip
+        const Chip = ({ label, icon }) => (
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E1E3E1] text-[#444746] text-xs font-medium">
+                {icon && <Icon name={icon} className="text-sm text-[#0B57D0]" />}
                 <span>{label}</span>
-            </div>
-        );
-
-        // Atom: Material 3 Surface Card Container
-        const M3Card = ({ children, className = "" }) => (
-            <div className={`bg-m3-surface rounded-[24px] p-6 border border-m3-surfaceVariant/80 shadow-sm transition-all duration-200 ${className}`}>
-                {children}
             </div>
         );
 
         // Atom: Section Header Text
         const SectionHeader = ({ title, icon }) => (
             <div className="flex items-center gap-2 mb-3 ml-1">
-                {icon && <Icon name={icon} className="text-m3-primary text-lg" />}
-                <h2 className="text-xs font-bold tracking-[1.2px] text-m3-primary uppercase">{title}</h2>
+                {icon && <Icon name={icon} className="text-[#0B57D0] text-xl" />}
+                <h2 className="text-sm font-bold tracking-wider text-[#0B57D0] uppercase">{title}</h2>
             </div>
         );
 
@@ -84,15 +61,22 @@
         // 2. MOLECULES (Google Atomic Design Pattern)
         // =========================================================
 
+        // Molecule: Material 3 Card Container
+        const M3Card = ({ children, className = "" }) => (
+            <div className={`bg-white p-6 rounded-[28px] border border-[#E1E3E1] shadow-sm hover:shadow-md transition-all duration-300 ${className}`}>
+                {children}
+            </div>
+        );
+
         // Molecule: Permission Item Box
         const PermissionBox = ({ title, code, description, icon }) => (
-            <div className="pt-4 mt-4 border-t border-m3-surfaceVariant">
+            <div className="pt-4 mt-4 border-t border-[#E1E3E1]">
                 <div className="flex items-center gap-2 mb-1.5">
-                    <Icon name={icon || "key"} className="text-m3-primary text-lg" />
-                    <h3 className="text-sm font-semibold text-m3-primary">{title}</h3>
+                    <Icon name={icon || "key"} className="text-[#0B57D0] text-lg" />
+                    <h3 className="text-sm font-semibold text-[#1F1F1F]">{title}</h3>
                 </div>
-                <p className="text-xs text-m3-onSurfaceVariant leading-relaxed">
-                    <span className="font-mono bg-m3-bg px-2 py-0.5 rounded text-[11px] text-m3-primary border border-m3-outline/40 mr-1">{code}</span>
+                <p className="text-xs text-[#444746] leading-relaxed">
+                    <span className="font-mono bg-[#F0F4F9] px-2 py-0.5 rounded text-[11px] text-[#0B57D0] border border-[#E1E3E1] mr-1.5 font-semibold">{code}</span>
                     {description}
                 </p>
             </div>
@@ -102,150 +86,151 @@
         // 3. ORGANISMS (Google Atomic Design Pattern)
         // =========================================================
 
-        // Organism: Top App Bar Header
+        // Organism: Top App Bar
         const Header = () => (
-            <header className="sticky top-0 z-50 bg-m3-surfaceHigh/90 backdrop-blur-md border-b border-m3-outline/40 px-6 py-4">
-                <div className="max-w-3xl mx-auto flex items-center justify-between">
+            <header className="sticky top-0 z-50 bg-[#F8FDFF]/80 backdrop-blur-md border-b border-[#E1E3E1] px-6 py-4">
+                <div className="max-w-4xl mx-auto flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <a href="/" className="w-10 h-10 rounded-full bg-m3-surfaceVariant text-m3-primary flex items-center justify-center hover:bg-m3-primaryContainer transition-colors">
+                        <a href="/" className="w-10 h-10 rounded-full bg-[#D3E3FD] text-[#041E49] flex items-center justify-center hover:bg-[#C2D7FA] transition-colors shadow-sm">
                             <Icon name="arrow_back" className="text-xl" />
                         </a>
                         <div>
-                            <h1 className="text-lg font-bold text-m3-primary tracking-tight leading-none">Only 5G Tools</h1>
-                            <p className="text-xs text-m3-onSurfaceVariant mt-1">Official Privacy Policy</p>
+                            <span className="font-bold text-lg text-[#1F1F1F] tracking-tight block leading-none">Only 5G Tools</span>
+                            <span className="text-xs text-[#444746] mt-1 block">Rajan Code Studio</span>
                         </div>
                     </div>
-                    <M3Chip label="Material You 3" icon="verified" />
+                    <Chip label="Privacy Policy" icon="verified_user" />
                 </div>
             </header>
         );
 
-        // Organism: Section - Overview
-        const OverviewSection = () => (
-            <section className="mb-6">
-                <SectionHeader title="Overview" icon="info" />
-                <M3Card>
-                    <p className="text-sm leading-relaxed text-m3-onSurface">
-                        <strong className="text-m3-primary">Only 5G Tools</strong> ("we", "our", or "us") respects your privacy. This Privacy Policy explains how our Android application handles network status monitoring and hidden 5G network settings access. We are committed to transparency and ensuring your personal data remains strictly safe.
-                    </p>
-                </M3Card>
+        // Organism: Hero Section
+        const Hero = () => (
+            <section className="text-center py-8 px-4 max-w-3xl mx-auto">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D3E3FD] text-[#041E49] text-xs font-semibold mb-3">
+                    <Icon name="policy" className="text-base" /> Legal & Privacy Information
+                </div>
+                <h1 className="text-3xl md:text-4xl font-bold text-[#1F1F1F] tracking-tight">
+                    Privacy Policy
+                </h1>
+                <div className="mt-3">
+                    <Chip label="Last Updated: July 30, 2026" icon="calendar_today" />
+                </div>
             </section>
         );
 
-        // Organism: Section - Data Collection & Storage
-        const DataCollectionSection = () => (
-            <section className="mb-6">
-                <SectionHeader title="Data Collection & Storage" icon="shield" />
-                <M3Card>
-                    <p className="text-sm font-medium text-m3-onSurface mb-3">
-                        <strong className="text-m3-primary">We do not collect, store, transmit, or monetize any personal data.</strong>
-                    </p>
-                    <ul className="space-y-2 pl-1">
-                        <li className="flex items-start gap-2 text-xs text-m3-onSurfaceVariant leading-relaxed">
-                            <Icon name="check_circle" className="text-m3-primary text-base shrink-0 mt-0.5" />
-                            <span>No personal identifiers (Name, Email, Phone Number) are requested or stored.</span>
-                        </li>
-                        <li className="flex items-start gap-2 text-xs text-m3-onSurfaceVariant leading-relaxed">
-                            <Icon name="check_circle" className="text-m3-primary text-base shrink-0 mt-0.5" />
-                            <span>No network traffic logs or browsing history are monitored or sent to remote servers.</span>
-                        </li>
-                        <li className="flex items-start gap-2 text-xs text-m3-onSurfaceVariant leading-relaxed">
-                            <Icon name="check_circle" className="text-m3-primary text-base shrink-0 mt-0.5" />
-                            <span>All network status calculations happen 100% locally on your Android device.</span>
-                        </li>
-                    </ul>
-                </M3Card>
-            </section>
-        );
+        // Organism: Policy Content Sections
+        const PolicyContent = () => (
+            <div className="space-y-6 max-w-4xl mx-auto">
+                {/* Overview */}
+                <section>
+                    <SectionHeader title="Overview" icon="info" />
+                    <M3Card>
+                        <p className="text-sm leading-relaxed text-[#444746]">
+                            <strong className="text-[#1F1F1F]">Only 5G Tools</strong> ("we", "our", or "us") respects your privacy. This Privacy Policy explains how our Android application handles network status monitoring and hidden 5G network settings access. We are committed to transparency and ensuring your personal data remains strictly safe.
+                        </p>
+                    </M3Card>
+                </section>
 
-        // Organism: Section - Permissions Explained
-        const PermissionsSection = () => (
-            <section className="mb-6">
-                <SectionHeader title="Permissions Explained" icon="lock" />
-                <M3Card>
-                    <p className="text-sm text-m3-onSurface leading-relaxed">
-                        Our application requests specific system permissions strictly required for core operational functions:
-                    </p>
-                    
-                    <PermissionBox 
-                        title="Network & Wi-Fi Access" 
-                        code="INTERNET, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE"
-                        description="Used to detect real-time internet connectivity, Wi-Fi SSID, and active network types (4G / 5G / Wi-Fi)."
-                        icon="wifi"
-                    />
+                {/* Data Collection & Storage */}
+                <section>
+                    <SectionHeader title="Data Collection & Storage" icon="shield" />
+                    <M3Card>
+                        <p className="text-sm font-semibold text-[#1F1F1F] mb-3">
+                            We do not collect, store, transmit, or monetize any personal data.
+                        </p>
+                        <ul className="space-y-2.5">
+                            <li className="flex items-start gap-2.5 text-xs text-[#444746] leading-relaxed">
+                                <Icon name="check_circle" className="text-[#0B57D0] text-base shrink-0 mt-0.5" />
+                                <span>No personal identifiers (Name, Email, Phone Number) are requested or stored.</span>
+                            </li>
+                            <li className="flex items-start gap-2.5 text-xs text-[#444746] leading-relaxed">
+                                <Icon name="check_circle" className="text-[#0B57D0] text-base shrink-0 mt-0.5" />
+                                <span>No network traffic logs or browsing history are monitored or sent to remote servers.</span>
+                            </li>
+                            <li className="flex items-start gap-2.5 text-xs text-[#444746] leading-relaxed">
+                                <Icon name="check_circle" className="text-[#0B57D0] text-base shrink-0 mt-0.5" />
+                                <span>All network status calculations happen 100% locally on your Android device.</span>
+                            </li>
+                        </ul>
+                    </M3Card>
+                </section>
 
-                    <PermissionBox 
-                        title="Cellular & SIM State" 
-                        code="READ_PHONE_STATE, READ_BASIC_PHONE_STATE"
-                        description="Required to read mobile signal strength levels (5-bar indicator) and carrier names (e.g., Jio 5G, Airtel 5G)."
-                        icon="signal_cellular_alt"
-                    />
+                {/* Permissions Explained */}
+                <section>
+                    <SectionHeader title="Permissions Explained" icon="lock" />
+                    <M3Card>
+                        <p className="text-sm text-[#444746] leading-relaxed">
+                            Our application requests specific system permissions strictly required for core operational functions:
+                        </p>
 
-                    <PermissionBox 
-                        title="Location Access" 
-                        code="ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION"
-                        description="Android system architecture mandates location permission to read cell tower information and Wi-Fi network names. We NEVER record or track your physical GPS location."
-                        icon="location_on"
-                    />
-                </M3Card>
-            </section>
-        );
+                        <PermissionBox 
+                            title="Network & Wi-Fi Access" 
+                            code="INTERNET, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE"
+                            description="Used to detect real-time internet connectivity, Wi-Fi SSID, and active network types (4G / 5G / Wi-Fi)."
+                            icon="wifi"
+                        />
 
-        // Organism: Section - Third-Party Services
-        const ThirdPartySection = () => (
-            <section className="mb-6">
-                <SectionHeader title="Third-Party Services" icon="extension" />
-                <M3Card>
-                    <p className="text-sm leading-relaxed text-m3-onSurface">
-                        Our application does not integrate third-party data tracking, user profiling, or intrusive advertising SDKs. Your operational usage remains completely private to your local device session.
-                    </p>
-                </M3Card>
-            </section>
-        );
+                        <PermissionBox 
+                            title="Cellular & SIM State" 
+                            code="READ_PHONE_STATE, READ_BASIC_PHONE_STATE"
+                            description="Required to read mobile signal strength levels (5-bar indicator) and carrier names (e.g., Jio 5G, Airtel 5G)."
+                            icon="signal_cellular_alt"
+                        />
 
-        // Organism: Section - Contact & Inquiries
-        const ContactSection = () => (
-            <section className="mb-6">
-                <SectionHeader title="Contact & Inquiries" icon="mail" />
-                <M3Card>
-                    <p className="text-sm leading-relaxed text-m3-onSurface">
-                        If you have any questions or concerns regarding this Privacy Policy, feel free to contact us:
-                    </p>
-                    <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-m3-bg border border-m3-outline/40">
-                        <Icon name="alternate_email" className="text-m3-primary" />
-                        <span className="text-sm font-semibold text-m3-primary">rajancodestudio@gmail.com</span>
-                    </div>
-                </M3Card>
-            </section>
+                        <PermissionBox 
+                            title="Location Access" 
+                            code="ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION"
+                            description="Android system architecture mandates location permission to read cell tower information and Wi-Fi network names. We NEVER record or track your physical GPS location."
+                            icon="location_on"
+                        />
+                    </M3Card>
+                </section>
+
+                {/* Third-Party Services */}
+                <section>
+                    <SectionHeader title="Third-Party Services" icon="extension" />
+                    <M3Card>
+                        <p className="text-sm leading-relaxed text-[#444746]">
+                            Our application does not integrate third-party data tracking, user profiling, or intrusive advertising SDKs. Your operational usage remains completely private to your local device session.
+                        </p>
+                    </M3Card>
+                </section>
+
+                {/* Contact & Inquiries */}
+                <section>
+                    <SectionHeader title="Contact & Inquiries" icon="mail" />
+                    <M3Card>
+                        <p className="text-sm leading-relaxed text-[#444746]">
+                            If you have any questions or concerns regarding this Privacy Policy, feel free to contact us:
+                        </p>
+                        <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[#F0F4F9] border border-[#E1E3E1]">
+                            <Icon name="alternate_email" className="text-[#0B57D0]" />
+                            <span className="text-sm font-bold text-[#0B57D0]">rajancodestudio@gmail.com</span>
+                        </div>
+                    </M3Card>
+                </section>
+            </div>
         );
 
         // Organism: Footer
         const Footer = () => (
-            <footer className="mt-12 border-t border-m3-outline/30 py-8 text-center text-xs text-m3-onSurfaceVariant">
-                <p>© 2026 Rajan Code Studio. Built strictly according to Google Material 3 Guidelines.</p>
+            <footer className="mt-16 border-t border-[#E1E3E1] py-8 text-center text-xs text-[#444746]">
+                <p>© 2026 Rajan Code Studio. Built with React & Google Material 3 Design Tokens.</p>
             </footer>
         );
 
         // =========================================================
-        // 4. MAIN TEMPLATE PAGE
+        // 4. MAIN PAGE TEMPLATE
         // =========================================================
-        function PrivacyPolicy() {
-            const lastUpdated = "July 30, 2026";
-
+        function App() {
             return (
                 <div className="min-h-screen flex flex-col justify-between">
                     <div>
                         <Header />
-                        <main className="max-w-3xl mx-auto px-4 py-6">
-                            <div className="mb-6">
-                                <M3Chip label={`Last Updated: ${lastUpdated}`} icon="calendar_today" />
-                            </div>
-
-                            <OverviewSection />
-                            <DataCollectionSection />
-                            <PermissionsSection />
-                            <ThirdPartySection />
-                            <ContactSection />
+                        <main className="px-6 py-4">
+                            <Hero />
+                            <PolicyContent />
                         </main>
                     </div>
                     <Footer />
@@ -255,7 +240,7 @@
 
         // Render React App
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<PrivacyPolicy />);
+        root.render(<App />);
     </script>
 </body>
 </html>
