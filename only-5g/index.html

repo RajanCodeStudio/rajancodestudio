@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <!-- Tailwind CSS (Google Material 3 Theme Palette) -->
+    <!-- Tailwind CSS (Auto Dark Mode Enabled by System Default) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'media', // Uses System Default OS Setting (prefers-color-scheme)
             theme: {
                 extend: {
                     fontFamily: {
@@ -28,7 +29,7 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body class="bg-[#F8FDFF] text-[#1F1F1F] font-sans antialiased min-h-screen">
+<body class="bg-[#F8FDFF] dark:bg-[#141218] text-[#1F1F1F] dark:text-[#E6E0E9] font-sans antialiased min-h-screen transition-colors duration-300">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -43,8 +44,8 @@
 
         // Atom: Material 3 Filter Chip
         const Chip = ({ label, icon }) => (
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E1E3E1] text-[#444746] text-xs font-medium">
-                {icon && <Icon name={icon} className="text-sm text-[#0B57D0]" />}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E1E3E1] dark:bg-[#332D41] text-[#444746] dark:text-[#E8DEF8] text-xs font-medium border border-transparent dark:border-[#49454F]/50 transition-colors">
+                {icon && <Icon name={icon} className="text-sm text-[#0B57D0] dark:text-[#D0BCFF]" />}
                 <span>{label}</span>
             </div>
         );
@@ -52,8 +53,8 @@
         // Atom: Section Header Text
         const SectionHeader = ({ title, icon }) => (
             <div className="flex items-center gap-2 mb-3 ml-1">
-                {icon && <Icon name={icon} className="text-[#0B57D0] text-xl" />}
-                <h2 className="text-sm font-bold tracking-wider text-[#0B57D0] uppercase">{title}</h2>
+                {icon && <Icon name={icon} className="text-[#0B57D0] dark:text-[#D0BCFF] text-xl" />}
+                <h2 className="text-sm font-bold tracking-wider text-[#0B57D0] dark:text-[#D0BCFF] uppercase">{title}</h2>
             </div>
         );
 
@@ -63,20 +64,20 @@
 
         // Molecule: Material 3 Card Container
         const M3Card = ({ children, className = "" }) => (
-            <div className={`bg-white p-6 rounded-[28px] border border-[#E1E3E1] shadow-sm hover:shadow-md transition-all duration-300 ${className}`}>
+            <div className={`bg-white dark:bg-[#211F26] p-6 rounded-[28px] border border-[#E1E3E1] dark:border-[#36343B] shadow-sm hover:shadow-md transition-all duration-300 ${className}`}>
                 {children}
             </div>
         );
 
         // Molecule: Permission Item Box
         const PermissionBox = ({ title, code, description, icon }) => (
-            <div className="pt-4 mt-4 border-t border-[#E1E3E1]">
+            <div className="pt-4 mt-4 border-t border-[#E1E3E1] dark:border-[#36343B]">
                 <div className="flex items-center gap-2 mb-1.5">
-                    <Icon name={icon || "key"} className="text-[#0B57D0] text-lg" />
-                    <h3 className="text-sm font-semibold text-[#1F1F1F]">{title}</h3>
+                    <Icon name={icon || "key"} className="text-[#0B57D0] dark:text-[#D0BCFF] text-lg" />
+                    <h3 className="text-sm font-semibold text-[#1F1F1F] dark:text-[#E6E0E9]">{title}</h3>
                 </div>
-                <p className="text-xs text-[#444746] leading-relaxed">
-                    <span className="font-mono bg-[#F0F4F9] px-2 py-0.5 rounded text-[11px] text-[#0B57D0] border border-[#E1E3E1] mr-1.5 font-semibold">{code}</span>
+                <p className="text-xs text-[#444746] dark:text-[#CAC4D0] leading-relaxed">
+                    <span className="font-mono bg-[#F0F4F9] dark:bg-[#141218] px-2 py-0.5 rounded text-[11px] text-[#0B57D0] dark:text-[#D0BCFF] border border-[#E1E3E1] dark:border-[#49454F] mr-1.5 font-semibold">{code}</span>
                     {description}
                 </p>
             </div>
@@ -88,15 +89,15 @@
 
         // Organism: Top App Bar
         const Header = () => (
-            <header className="sticky top-0 z-50 bg-[#F8FDFF]/80 backdrop-blur-md border-b border-[#E1E3E1] px-6 py-4">
+            <header className="sticky top-0 z-50 bg-[#F8FDFF]/80 dark:bg-[#2B2930]/80 backdrop-blur-md border-b border-[#E1E3E1] dark:border-[#49454F] px-6 py-4 transition-colors">
                 <div className="max-w-4xl mx-auto flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <a href="/" className="w-10 h-10 rounded-full bg-[#D3E3FD] text-[#041E49] flex items-center justify-center hover:bg-[#C2D7FA] transition-colors shadow-sm">
+                        <a href="/" className="w-10 h-10 rounded-full bg-[#D3E3FD] dark:bg-[#381E72] text-[#041E49] dark:text-[#D0BCFF] flex items-center justify-center hover:bg-[#C2D7FA] dark:hover:bg-[#4F378B] transition-colors shadow-sm">
                             <Icon name="arrow_back" className="text-xl" />
                         </a>
                         <div>
-                            <span className="font-bold text-lg text-[#1F1F1F] tracking-tight block leading-none">Only 5G Tools</span>
-                            <span className="text-xs text-[#444746] mt-1 block">Rajan Code Studio</span>
+                            <span className="font-bold text-lg text-[#1F1F1F] dark:text-[#E6E0E9] tracking-tight block leading-none">Only 5G Tools</span>
+                            <span className="text-xs text-[#444746] dark:text-[#CAC4D0] mt-1 block">Rajan Code Studio</span>
                         </div>
                     </div>
                     <Chip label="Privacy Policy" icon="verified_user" />
@@ -107,10 +108,10 @@
         // Organism: Hero Section
         const Hero = () => (
             <section className="text-center py-8 px-4 max-w-3xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D3E3FD] text-[#041E49] text-xs font-semibold mb-3">
-                    <Icon name="policy" className="text-base" /> Legal & Privacy Information
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D3E3FD] dark:bg-[#381E72] text-[#041E49] dark:text-[#E8DEF8] text-xs font-semibold mb-3 transition-colors">
+                    <Icon name="policy" className="text-base text-[#0B57D0] dark:text-[#D0BCFF]" /> Legal & Privacy Information
                 </div>
-                <h1 className="text-3xl md:text-4xl font-bold text-[#1F1F1F] tracking-tight">
+                <h1 className="text-3xl md:text-4xl font-bold text-[#1F1F1F] dark:text-[#E6E0E9] tracking-tight">
                     Privacy Policy
                 </h1>
                 <div className="mt-3">
@@ -126,8 +127,8 @@
                 <section>
                     <SectionHeader title="Overview" icon="info" />
                     <M3Card>
-                        <p className="text-sm leading-relaxed text-[#444746]">
-                            <strong className="text-[#1F1F1F]">Only 5G Tools</strong> ("we", "our", or "us") respects your privacy. This Privacy Policy explains how our Android application handles network status monitoring and hidden 5G network settings access. We are committed to transparency and ensuring your personal data remains strictly safe.
+                        <p className="text-sm leading-relaxed text-[#444746] dark:text-[#CAC4D0]">
+                            <strong className="text-[#1F1F1F] dark:text-[#E6E0E9]">Only 5G Tools</strong> ("we", "our", or "us") respects your privacy. This Privacy Policy explains how our Android application handles network status monitoring and hidden 5G network settings access. We are committed to transparency and ensuring your personal data remains strictly safe.
                         </p>
                     </M3Card>
                 </section>
@@ -136,20 +137,20 @@
                 <section>
                     <SectionHeader title="Data Collection & Storage" icon="shield" />
                     <M3Card>
-                        <p className="text-sm font-semibold text-[#1F1F1F] mb-3">
+                        <p className="text-sm font-semibold text-[#1F1F1F] dark:text-[#E6E0E9] mb-3">
                             We do not collect, store, transmit, or monetize any personal data.
                         </p>
                         <ul className="space-y-2.5">
-                            <li className="flex items-start gap-2.5 text-xs text-[#444746] leading-relaxed">
-                                <Icon name="check_circle" className="text-[#0B57D0] text-base shrink-0 mt-0.5" />
+                            <li className="flex items-start gap-2.5 text-xs text-[#444746] dark:text-[#CAC4D0] leading-relaxed">
+                                <Icon name="check_circle" className="text-[#0B57D0] dark:text-[#D0BCFF] text-base shrink-0 mt-0.5" />
                                 <span>No personal identifiers (Name, Email, Phone Number) are requested or stored.</span>
                             </li>
-                            <li className="flex items-start gap-2.5 text-xs text-[#444746] leading-relaxed">
-                                <Icon name="check_circle" className="text-[#0B57D0] text-base shrink-0 mt-0.5" />
+                            <li className="flex items-start gap-2.5 text-xs text-[#444746] dark:text-[#CAC4D0] leading-relaxed">
+                                <Icon name="check_circle" className="text-[#0B57D0] dark:text-[#D0BCFF] text-base shrink-0 mt-0.5" />
                                 <span>No network traffic logs or browsing history are monitored or sent to remote servers.</span>
                             </li>
-                            <li className="flex items-start gap-2.5 text-xs text-[#444746] leading-relaxed">
-                                <Icon name="check_circle" className="text-[#0B57D0] text-base shrink-0 mt-0.5" />
+                            <li className="flex items-start gap-2.5 text-xs text-[#444746] dark:text-[#CAC4D0] leading-relaxed">
+                                <Icon name="check_circle" className="text-[#0B57D0] dark:text-[#D0BCFF] text-base shrink-0 mt-0.5" />
                                 <span>All network status calculations happen 100% locally on your Android device.</span>
                             </li>
                         </ul>
@@ -160,7 +161,7 @@
                 <section>
                     <SectionHeader title="Permissions Explained" icon="lock" />
                     <M3Card>
-                        <p className="text-sm text-[#444746] leading-relaxed">
+                        <p className="text-sm text-[#444746] dark:text-[#CAC4D0] leading-relaxed">
                             Our application requests specific system permissions strictly required for core operational functions:
                         </p>
 
@@ -191,7 +192,7 @@
                 <section>
                     <SectionHeader title="Third-Party Services" icon="extension" />
                     <M3Card>
-                        <p className="text-sm leading-relaxed text-[#444746]">
+                        <p className="text-sm leading-relaxed text-[#444746] dark:text-[#CAC4D0]">
                             Our application does not integrate third-party data tracking, user profiling, or intrusive advertising SDKs. Your operational usage remains completely private to your local device session.
                         </p>
                     </M3Card>
@@ -201,12 +202,12 @@
                 <section>
                     <SectionHeader title="Contact & Inquiries" icon="mail" />
                     <M3Card>
-                        <p className="text-sm leading-relaxed text-[#444746]">
+                        <p className="text-sm leading-relaxed text-[#444746] dark:text-[#CAC4D0]">
                             If you have any questions or concerns regarding this Privacy Policy, feel free to contact us:
                         </p>
-                        <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[#F0F4F9] border border-[#E1E3E1]">
-                            <Icon name="alternate_email" className="text-[#0B57D0]" />
-                            <span className="text-sm font-bold text-[#0B57D0]">rajancodestudio@gmail.com</span>
+                        <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[#F0F4F9] dark:bg-[#2B2930] border border-[#E1E3E1] dark:border-[#49454F]">
+                            <Icon name="alternate_email" className="text-[#0B57D0] dark:text-[#D0BCFF]" />
+                            <span className="text-sm font-bold text-[#0B57D0] dark:text-[#D0BCFF]">rajancodestudio@gmail.com</span>
                         </div>
                     </M3Card>
                 </section>
@@ -215,7 +216,7 @@
 
         // Organism: Footer
         const Footer = () => (
-            <footer className="mt-16 border-t border-[#E1E3E1] py-8 text-center text-xs text-[#444746]">
+            <footer className="mt-16 border-t border-[#E1E3E1] dark:border-[#36343B] py-8 text-center text-xs text-[#444746] dark:text-[#CAC4D0] transition-colors">
                 <p>© 2026 Rajan Code Studio. Built with React & Google Material 3 Design Tokens.</p>
             </footer>
         );
