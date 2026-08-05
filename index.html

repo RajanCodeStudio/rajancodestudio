@@ -1,239 +1,294 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rajan Code Studio</title>
+    <title>Rajan Code Studio | Official Developer Showcase</title>
+    <meta name="description" content="Official developer portfolio and app showcase for Rajan Code Studio by Raju. Explore utility apps, 5G tools, and developer communities.">
+    
+    <!-- Google Pixel Fonts & Material Symbols (M3) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <!-- Google Material Symbols & Fonts (Material 3) -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-    <!-- Tailwind CSS (Auto Dark Mode Enabled by System Default) -->
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'media', // Auto Dark Mode based on Device OS Settings
+            darkMode: 'media',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Google Sans', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        m3: {
+                            lightBg: '#F8FDFF',
+                            darkBg: '#141218',
+                            lightSurface: '#FFFFFF',
+                            darkSurface: '#211F26',
+                            lightPrimary: '#0B57D0',
+                            darkPrimary: '#D0BCFF',
+                            lightPrimaryBg: '#D3E3FD',
+                            darkPrimaryBg: '#381E72',
+                            lightText: '#1F1F1F',
+                            darkText: '#E6E0E9',
+                            lightSubtext: '#444746',
+                            darkSubtext: '#CAC4D0',
+                            lightBorder: '#E1E3E1',
+                            darkBorder: '#36343B'
+                        }
                     }
                 }
             }
         }
     </script>
 
-    <!-- React 18 & Babel CDN -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
-<body class="bg-[#F8FDFF] dark:bg-[#141218] text-[#1F1F1F] dark:text-[#E6E0E9] font-sans antialiased min-h-screen transition-colors duration-300">
-    <div id="root"></div>
-
-    <script type="text/babel">
-        const { useState } = React;
-
-        // =========================================================
-        // 1. ATOMS (Google Atomic Design Pattern)
-        // =========================================================
-        
-        // Atom: Material Symbol Icon
-        const Icon = ({ name, className = "" }) => (
-            <span className={`material-symbols-outlined select-none ${className}`}>{name}</span>
-        );
-
-        // Atom: Material 3 Filter Chip
-        const Chip = ({ label, icon }) => (
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E1E3E1] dark:bg-[#332D41] text-[#444746] dark:text-[#E8DEF8] text-xs font-medium border border-transparent dark:border-[#49454F]/40 transition-colors">
-                {icon && <Icon name={icon} className="text-sm text-[#0B57D0] dark:text-[#D0BCFF]" />}
-                <span>{label}</span>
-            </div>
-        );
-
-        // Atom: Material 3 Button (Filled / Tonal / Outlined)
-        const M3Button = ({ href, children, variant = "filled", icon, target = "_self" }) => {
-            const baseStyles = "w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md";
-            const variants = {
-                filled: "bg-[#0B57D0] text-white hover:bg-[#0842A0] dark:bg-[#D0BCFF] dark:text-[#381E72] dark:hover:bg-[#E8DEF8]",
-                tonal: "bg-[#D3E3FD] text-[#041E49] hover:bg-[#C2D7FA] dark:bg-[#381E72] dark:text-[#E8DEF8] dark:hover:bg-[#4F378B]",
-                outlined: "border border-[#747775] text-[#0B57D0] hover:bg-[#0B57D0]/5 dark:border-[#938F99] dark:text-[#D0BCFF] dark:hover:bg-[#D0BCFF]/10"
-            };
-
-            return (
-                <a href={href} target={target} rel="noopener noreferrer" className={`${baseStyles} ${variants[variant]}`}>
-                    {icon && <Icon name={icon} className="text-lg" />}
-                    <span>{children}</span>
-                </a>
-            );
-        };
-
-        // =========================================================
-        // 2. MOLECULES (Google Atomic Design Pattern)
-        // =========================================================
-
-        // Molecule: Social Channel Card
-        const SocialCard = ({ title, subtitle, icon, url, badgeText, btnVariant = "tonal" }) => (
-            <div className="bg-[#F0F4F9] dark:bg-[#211F26] p-5 sm:p-6 rounded-[24px] border border-[#E1E3E1]/80 dark:border-[#36343B] hover:border-[#0B57D0]/40 dark:hover:border-[#D0BCFF]/40 transition-all duration-300 flex flex-col justify-between gap-5 shadow-sm">
-                <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-3.5">
-                        <div className="w-12 h-12 rounded-2xl bg-white dark:bg-[#2B2930] flex items-center justify-center shadow-sm text-[#0B57D0] dark:text-[#D0BCFF] shrink-0">
-                            <Icon name={icon} className="text-2xl" />
-                        </div>
-                        <div className="min-w-0">
-                            <h3 className="font-bold text-base text-[#1F1F1F] dark:text-[#E6E0E9] truncate">{title}</h3>
-                            <p className="text-xs text-[#444746] dark:text-[#CAC4D0] truncate mt-0.5">{subtitle}</p>
-                        </div>
-                    </div>
-                    {badgeText && <Chip label={badgeText} />}
-                </div>
-                <M3Button href={url} variant={btnVariant} icon="open_in_new" target="_blank">
-                    Join / Follow
-                </M3Button>
-            </div>
-        );
-
-        // Molecule: App Item Card
-        const AppCard = ({ name, description, privacyUrl, iconName }) => (
-            <div className="bg-white dark:bg-[#211F26] p-5 sm:p-6 rounded-[28px] border border-[#E1E3E1] dark:border-[#36343B] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-                <div className="flex items-start sm:items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-[#D3E3FD] dark:bg-[#381E72] text-[#041E49] dark:text-[#D0BCFF] flex items-center justify-center font-bold text-2xl shadow-inner shrink-0">
-                        <Icon name={iconName || "smartphone"} className="text-3xl" />
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                            <h3 className="text-lg font-bold text-[#1F1F1F] dark:text-[#E6E0E9]">{name}</h3>
-                            <Chip label="Official App" />
-                        </div>
-                        <p className="text-xs sm:text-sm text-[#444746] dark:text-[#CAC4D0] mt-1 leading-relaxed">{description}</p>
-                    </div>
-                </div>
-                <div className="flex items-center gap-2 w-full sm:w-auto shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#E1E3E1] dark:border-[#36343B]">
-                    <M3Button href={privacyUrl} variant="outlined" icon="policy">
-                        Privacy Policy
-                    </M3Button>
-                </div>
-            </div>
-        );
-
-        // =========================================================
-        // 3. ORGANISMS (Google Atomic Design Pattern)
-        // =========================================================
-
-        // Organism: Top App Bar
-        const Header = () => (
-            <header className="sticky top-0 z-50 bg-[#F8FDFF]/80 dark:bg-[#141218]/80 backdrop-blur-md border-b border-[#E1E3E1] dark:border-[#36343B] px-4 sm:px-6 py-4 transition-colors">
-                <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[#0B57D0] dark:bg-[#D0BCFF] text-white dark:text-[#381E72] flex items-center justify-center font-bold text-xl shadow-md shrink-0">
-                            R
-                        </div>
-                        <span className="font-bold text-base sm:text-lg text-[#1F1F1F] dark:text-[#E6E0E9] tracking-tight">Rajan Code Studio</span>
-                    </div>
-                    <Chip label="Material You M3" icon="verified" />
-                </div>
-            </header>
-        );
-
-        // Organism: Hero Section
-        const Hero = () => (
-            <section className="text-center py-8 sm:py-12 px-4 max-w-3xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D3E3FD] dark:bg-[#381E72] text-[#041E49] dark:text-[#E8DEF8] text-xs font-semibold mb-4 transition-colors">
-                    <Icon name="code" className="text-base text-[#0B57D0] dark:text-[#D0BCFF]" /> Official Developer Studio
-                </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1F1F1F] dark:text-[#E6E0E9] tracking-tight leading-tight">
-                    Rajan Code Studio
-                </h1>
-                <p className="text-sm sm:text-base md:text-lg text-[#444746] dark:text-[#CAC4D0] mt-3 sm:mt-4 leading-relaxed max-w-2xl mx-auto">
-                    Building high-quality Android applications, utility solutions, and developer communities with Google Material 3 standards.
-                </p>
-            </section>
-        );
-
-        // Organism: Published Applications Section
-        const AppShowcase = () => (
-            <section className="my-8 sm:my-12">
-                <div className="flex items-center gap-2 mb-4 sm:mb-6">
-                    <Icon name="apps" className="text-[#0B57D0] dark:text-[#D0BCFF] text-2xl" />
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#1F1F1F] dark:text-[#E6E0E9]">Applications</h2>
-                </div>
-                <div className="space-y-4">
-                    <AppCard 
-                        name="Only 5G" 
-                        description="Force 5G NR mode and smart network switch utility application." 
-                        privacyUrl="/only-5g" 
-                        iconName="5g"
-                    />
-                </div>
-            </section>
-        );
-
-        // Organism: Socials & Community Grid
-        const CommunitySection = () => (
-            <section className="my-8 sm:my-12">
-                <div className="flex items-center gap-2 mb-4 sm:mb-6">
-                    <Icon name="groups" className="text-[#0B57D0] dark:text-[#D0BCFF] text-2xl" />
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#1F1F1F] dark:text-[#E6E0E9]">Community & Social Media</h2>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-                    <SocialCard 
-                        title="Telegram Channel" 
-                        subtitle="@RajanCodeStudio" 
-                        icon="send" 
-                        url="https://t.me/RajanCodeStudio" 
-                        badgeText="Official"
-                        btnVariant="filled"
-                    />
-                    <SocialCard 
-                        title="Discussion Group" 
-                        subtitle="@RajanCodeStudioCommunity" 
-                        icon="forum" 
-                        url="https://t.me/RajanCodeStudioCommunity" 
-                        badgeText="Support"
-                        btnVariant="tonal"
-                    />
-                    <SocialCard 
-                        title="Instagram" 
-                        subtitle="@botrakshakyt" 
-                        icon="photo_camera" 
-                        url="https://www.instagram.com/botrakshakyt" 
-                        badgeText="Updates"
-                        btnVariant="outlined"
-                    />
-                </div>
-            </section>
-        );
-
-        // Organism: Footer
-        const Footer = () => (
-            <footer className="mt-16 sm:mt-20 border-t border-[#E1E3E1] dark:border-[#36343B] py-8 text-center text-xs text-[#444746] dark:text-[#CAC4D0] transition-colors px-4">
-                <p>© 2026 Rajan Code Studio. Built with React & Google Material 3 Design Tokens.</p>
-            </footer>
-        );
-
-        // =========================================================
-        // 4. MAIN PAGE TEMPLATE
-        // =========================================================
-        function App() {
-            return (
-                <div className="min-h-screen flex flex-col justify-between">
-                    <div>
-                        <Header />
-                        <main className="max-w-5xl mx-auto px-4 sm:px-6">
-                            <Hero />
-                            <AppShowcase />
-                            <CommunitySection />
-                        </main>
-                    </div>
-                    <Footer />
-                </div>
-            );
+    <style>
+        /* CSS M3 Custom Tokens & Instant Engine Optimizations */
+        :root {
+            --m3-transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
         }
+        .m3-glass {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-m3-lightBg dark:bg-m3-darkBg text-m3-lightText dark:text-m3-darkText font-sans antialiased min-h-screen transition-colors duration-300">
 
-        // Render React App
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 m3-glass bg-m3-lightBg/80 dark:bg-m3-darkBg/80 border-b border-m3-lightBorder dark:border-m3-darkBorder px-4 sm:px-8 py-3.5">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-2xl bg-m3-lightPrimary dark:bg-m3-darkPrimary text-white dark:text-[#381E72] flex items-center justify-center font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                    R
+                </div>
+                <div>
+                    <span class="font-bold text-base sm:text-lg tracking-tight block leading-none">Rajan Code Studio</span>
+                    <span class="text-[11px] text-m3-lightSubtext dark:text-m3-darkSubtext font-medium mt-0.5 block">By Raju</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-m3-lightPrimaryBg/60 dark:bg-m3-darkPrimaryBg/60 text-m3-lightPrimary dark:text-m3-darkPrimary text-xs font-semibold">
+                    <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                    Pixel OS Theme
+                </div>
+                <a href="#apps" class="px-4 py-2 rounded-full bg-m3-lightPrimary dark:bg-m3-darkPrimary text-white dark:text-[#381E72] text-xs font-bold hover:shadow-md transition-all active:scale-95">
+                    Explore Apps
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-8 py-6 space-y-12">
+
+        <!-- Hero Section -->
+        <section class="text-center py-10 sm:py-16 max-w-3xl mx-auto space-y-5">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-m3-lightPrimaryBg dark:bg-m3-darkPrimaryBg text-m3-lightPrimary dark:text-[#E8DEF8] text-xs font-semibold shadow-sm">
+                <span class="material-symbols-outlined text-base">verified</span>
+                Official Android Developer Studio
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                Modern Tools & Utilities for <span class="text-m3-lightPrimary dark:text-m3-darkPrimary">Android Devices</span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed max-w-2xl mx-auto">
+                Welcome to <strong>Rajan Code Studio</strong>. We design high-performance, lightweight Android utilities following 100% Google Material 3 guidelines and privacy-first standards.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+                <a href="#apps" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-m3-lightPrimary dark:bg-m3-darkPrimary text-white dark:text-[#381E72] font-semibold text-sm shadow-md hover:shadow-lg transition-all active:scale-95">
+                    <span class="material-symbols-outlined">android</span>
+                    View Applications
+                </a>
+                <a href="#community" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-m3-lightSurface dark:bg-m3-darkSurface border border-m3-lightBorder dark:border-m3-darkBorder font-semibold text-sm hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                    <span class="material-symbols-outlined text-m3-lightPrimary dark:text-m3-darkPrimary">groups</span>
+                    Join Community
+                </a>
+            </div>
+        </section>
+
+        <!-- Applications Showcase Section -->
+        <section id="apps" class="space-y-6 scroll-mt-24">
+            <div class="flex items-center justify-between border-b border-m3-lightBorder dark:border-m3-darkBorder pb-4">
+                <div class="flex items-center gap-2.5">
+                    <span class="material-symbols-outlined text-m3-lightPrimary dark:text-m3-darkPrimary text-2xl">apps</span>
+                    <h2 class="text-xl sm:text-2xl font-bold">Featured Applications</h2>
+                </div>
+                <span class="text-xs text-m3-lightSubtext dark:text-m3-darkSubtext font-medium">Google Play Verified</span>
+            </div>
+
+            <!-- App Card 1: Only 5G Network Mode -->
+            <div class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 sm:p-8 rounded-[32px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm hover:shadow-md transition-all flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                
+                <div class="flex items-start sm:items-center gap-5">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-m3-lightPrimaryBg dark:bg-m3-darkPrimaryBg text-m3-lightPrimary dark:text-m3-darkPrimary flex items-center justify-center font-bold shadow-inner shrink-0">
+                        <span class="material-symbols-outlined text-4xl sm:text-5xl">5g</span>
+                    </div>
+                    
+                    <div class="space-y-1.5">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h3 class="text-xl font-bold">Only 5G Network Mode</h3>
+                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
+                                Live on Play Store
+                            </span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed max-w-xl">
+                            Force 5G NR mode, monitor signal strength, switch network bands, and access hidden network settings seamlessly on your Android phone.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-m3-lightSubtext dark:text-m3-darkSubtext pt-1">
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-m3-lightPrimary dark:text-m3-darkPrimary">verified_user</span> 100% Secure</span>
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-m3-lightPrimary dark:text-m3-darkPrimary">bolt</span> No Root Required</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download & Policy Buttons -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-m3-lightBorder dark:border-m3-darkBorder">
+                    <!-- Google Play Download Button -->
+                    <a href="https://play.google.com/store/apps" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-black dark:bg-white text-white dark:text-black font-semibold text-xs hover:opacity-90 transition-all shadow-md active:scale-95">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L18.81,13.97C19.46,13.59 19.46,12.41 18.81,12.03L16.81,10.88L14.81,12.88L16.81,15.12M4.6,1.41L14.28,11.1L12.28,13.1L2.6,3.41C2.92,3.15 3.33,3 3.75,3C4.06,3 4.36,3.15 4.6,1.41M4.6,22.59C4.36,22.85 4.06,23 3.75,23C3.33,23 2.92,22.85 2.6,22.59L12.28,12.9L14.28,14.9L4.6,22.59Z"/>
+                        </svg>
+                        <div class="text-left leading-tight">
+                            <div class="text-[9px] uppercase tracking-wider opacity-80">Get it on</div>
+                            <div class="text-xs font-bold">Google Play</div>
+                        </div>
+                    </a>
+
+                    <!-- Privacy Policy Button -->
+                    <a href="/only-5g" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full border border-m3-lightBorder dark:border-m3-darkBorder text-m3-lightPrimary dark:text-m3-darkPrimary font-medium text-xs hover:bg-m3-lightPrimaryBg/30 dark:hover:bg-m3-darkPrimaryBg/30 transition-all">
+                        <span class="material-symbols-outlined text-base">policy</span>
+                        Privacy Policy
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Developer Information Section -->
+        <section class="bg-m3-lightPrimaryBg/40 dark:bg-m3-darkPrimaryBg/30 p-6 sm:p-8 rounded-[32px] border border-m3-lightBorder dark:border-m3-darkBorder space-y-6">
+            <div class="flex items-center gap-2.5">
+                <span class="material-symbols-outlined text-m3-lightPrimary dark:text-m3-darkPrimary text-2xl">account_circle</span>
+                <h2 class="text-xl font-bold">About Developer</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-extrabold">Raju <span class="text-xs font-semibold px-3 py-1 rounded-full bg-m3-lightPrimary dark:bg-m3-darkPrimary text-white dark:text-[#381E72] ml-2">Founder & Lead Dev</span></h3>
+                    <p class="text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed max-w-xl">
+                        Creator and primary developer at <strong>Rajan Code Studio</strong>. Dedicated to building efficient Android tools, automation systems, and developer-friendly community solutions.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-xl bg-m3-lightSurface dark:bg-m3-darkSurface text-xs font-medium border border-m3-lightBorder dark:border-m3-darkBorder">Android Dev</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-m3-lightSurface dark:bg-m3-darkSurface text-xs font-medium border border-m3-lightBorder dark:border-m3-darkBorder">Material You M3</span>
+                    <span class="px-3 py-1.5 rounded-xl bg-m3-lightSurface dark:bg-m3-darkSurface text-xs font-medium border border-m3-lightBorder dark:border-m3-darkBorder">Automation Bots</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community & Social Media Section -->
+        <section id="community" class="space-y-6 scroll-mt-24">
+            <div class="flex items-center gap-2.5 border-b border-m3-lightBorder dark:border-m3-darkBorder pb-4">
+                <span class="material-symbols-outlined text-m3-lightPrimary dark:text-m3-darkPrimary text-2xl">forum</span>
+                <h2 class="text-xl sm:text-2xl font-bold">Community & Official Channels</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- Telegram Channel -->
+                <div class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 rounded-[28px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm flex flex-col justify-between gap-5 hover:border-m3-lightPrimary dark:hover:border-m3-darkPrimary transition-all">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-[#0088cc]/10 text-[#0088cc] flex items-center justify-center font-bold text-2xl">
+                                <span class="material-symbols-outlined">send</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base">Telegram Channel</h3>
+                                <p class="text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">@RajanCodeStudio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://t.me/RajanCodeStudio" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-[#0088cc] text-white text-xs font-bold hover:opacity-90 transition-all">
+                        Join Channel
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
+                </div>
+
+                <!-- Discussion Group -->
+                <div class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 rounded-[28px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm flex flex-col justify-between gap-5 hover:border-m3-lightPrimary dark:hover:border-m3-darkPrimary transition-all">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-m3-lightPrimaryBg dark:bg-m3-darkPrimaryBg text-m3-lightPrimary dark:text-m3-darkPrimary flex items-center justify-center font-bold text-2xl">
+                                <span class="material-symbols-outlined">groups</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base">Discussion Group</h3>
+                                <p class="text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">Community Hub</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://t.me/RajanCodeStudioCommunity" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-m3-lightPrimaryBg dark:bg-m3-darkPrimaryBg text-m3-lightPrimary dark:text-m3-darkPrimary text-xs font-bold hover:opacity-80 transition-all">
+                        Join Community
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
+                </div>
+
+                <!-- Instagram -->
+                <div class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 rounded-[28px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm flex flex-col justify-between gap-5 hover:border-m3-lightPrimary dark:hover:border-m3-darkPrimary transition-all">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-500 flex items-center justify-center font-bold text-2xl">
+                                <span class="material-symbols-outlined">photo_camera</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-base">Instagram</h3>
+                                <p class="text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">@botrakshakyt</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/botrakshakyt" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-m3-lightBorder dark:border-m3-darkBorder text-xs font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                        Follow Updates
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="border-t border-m3-lightBorder dark:border-m3-darkBorder py-10 mt-16 px-4 sm:px-8 bg-m3-lightSurface/50 dark:bg-m3-darkSurface/50">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">
+            <div>
+                <p class="font-semibold text-m3-lightText dark:text-m3-darkText">© 2026 Rajan Code Studio. All rights reserved.</p>
+                <p class="mt-0.5">Designed according to Google Material 3 Guidelines.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/only-5g" class="hover:underline">Only 5G Privacy Policy</a>
+                <span>•</span>
+                <a href="mailto:rajancodestudio@gmail.com" class="hover:underline">rajancodestudio@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla JS Engine for Instant Interactive Performance -->
+    <script>
+        // Performance Optimized Vanilla Engine
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Rajan Code Studio Engine Loaded - 100% Google Standard');
+        });
     </script>
 </body>
 </html>
