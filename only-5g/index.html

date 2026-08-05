@@ -1,460 +1,236 @@
 <!DOCTYPE html>
-<html lang="hi" dir="ltr">
+<html lang="hi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#141218">
-    <title>Privacy Policy - Only 5G Tools</title>
-
-    <!-- Google Official Typography & Icons -->
+    <title>Privacy Policy - Only 5G Network Mode | Rajan Code Studio</title>
+    <meta name="description" content="Official Privacy Policy for Only 5G Network Mode app developed by Rajan Code Studio. Read about our privacy-first data handling standards.">
+    
+    <!-- Google Pixel Fonts & Material Symbols (M3) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <!-- Google Material 3 Design System Tokens (CSS Standard) -->
-    <style>
-        :root {
-            /* M3 Light Color Tokens */
-            --md-sys-color-background: #F8FDFF;
-            --md-sys-color-on-background: #1F1F1F;
-            --md-sys-color-surface: #FFFFFF;
-            --md-sys-color-surface-container: #F0F4F9;
-            --md-sys-color-primary: #0B57D0;
-            --md-sys-color-on-primary-container: #041E49;
-            --md-sys-color-primary-container: #D3E3FD;
-            --md-sys-color-outline: #E1E3E1;
-            --md-sys-color-on-surface-variant: #444746;
-            --md-sys-color-header-bg: rgba(248, 253, 255, 0.85);
-
-            /* Typography */
-            --md-sys-typescale-font: 'Google Sans', 'Roboto', sans-serif;
-            --md-sys-shape-corner-card: 28px;
-            --md-sys-shape-corner-chip: 100px;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                /* M3 Dark Color Tokens (Exact Match to Pixel System) */
-                --md-sys-color-background: #141218;
-                --md-sys-color-on-background: #E6E0E9;
-                --md-sys-color-surface: #211F26;
-                --md-sys-color-surface-container: #2B2930;
-                --md-sys-color-primary: #D0BCFF;
-                --md-sys-color-on-primary-container: #E8DEF8;
-                --md-sys-color-primary-container: #381E72;
-                --md-sys-color-outline: #36343B;
-                --md-sys-color-on-surface-variant: #CAC4D0;
-                --md-sys-color-header-bg: rgba(43, 41, 48, 0.85);
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media', // Auto System OS Theme
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Google Sans', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        m3: {
+                            lightBg: '#F8FDFF',
+                            darkBg: '#141218',
+                            lightSurface: '#FFFFFF',
+                            darkSurface: '#211F26',
+                            lightPrimary: '#0B57D0',
+                            darkPrimary: '#D0BCFF',
+                            lightPrimaryBg: '#D3E3FD',
+                            darkPrimaryBg: '#381E72',
+                            lightText: '#1F1F1F',
+                            darkText: '#E6E0E9',
+                            lightSubtext: '#444746',
+                            darkSubtext: '#CAC4D0',
+                            lightBorder: '#E1E3E1',
+                            darkBorder: '#36343B'
+                        }
+                    }
+                }
             }
         }
+    </script>
 
-        /* Base Reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+    <style>
+        /* M3 Optimizations */
+        .m3-glass {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
-
-        body {
-            background-color: var(--md-sys-color-background);
-            color: var(--md-sys-color-on-background);
-            font-family: var(--md-sys-typescale-font);
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Material Icons Wrapper */
         .material-symbols-outlined {
-            font-family: 'Material Symbols Outlined';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 20px;
-            line-height: 1;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-        }
-
-        /* Layout Structure */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
-
-        /* Header Component (Atoms/Molecules) */
-        .top-app-bar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: var(--md-sys-color-header-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--md-sys-color-outline);
-            padding: 16px 20px;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .back-button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .back-button:hover {
-            opacity: 0.85;
-        }
-
-        .brand-title {
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .brand-subtitle {
-            font-size: 12px;
-            color: var(--md-sys-color-on-surface-variant);
-        }
-
-        /* Chips Component */
-        .m3-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: var(--md-sys-shape-corner-chip);
-            background-color: var(--md-sys-color-surface-container);
-            color: var(--md-sys-color-on-surface-variant);
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .m3-chip .material-symbols-outlined {
-            font-size: 16px;
-            color: var(--md-sys-color-primary);
-        }
-
-        /* Hero Component */
-        .hero-section {
-            text-align: center;
-            padding: 32px 0 24px 0;
-        }
-
-        .hero-title {
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-top: 12px;
-        }
-
-        /* Policy Sections & Cards */
-        .policy-group {
-            margin-bottom: 24px;
-        }
-
-        .section-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--md-sys-color-primary);
-            margin-bottom: 8px;
-            padding-left: 4px;
-        }
-
-        .m3-card {
-            background-color: var(--md-sys-color-surface);
-            border: 1px solid var(--md-sys-color-outline);
-            border-radius: var(--md-sys-shape-corner-card);
-            padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .card-text {
-            font-size: 14px;
-            color: var(--md-sys-color-on-surface-variant);
-            line-height: 1.6;
-        }
-
-        /* Permission List */
-        .permission-item {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--md-sys-color-outline);
-        }
-
-        .permission-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-        }
-
-        .permission-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--md-sys-color-on-background);
-        }
-
-        .code-badge {
-            font-family: monospace;
-            font-size: 11px;
-            background-color: var(--md-sys-color-surface-container);
-            color: var(--md-sys-color-primary);
-            padding: 2px 6px;
-            border-radius: 4px;
-            border: 1px solid var(--md-sys-color-outline);
-            margin-right: 6px;
-            font-weight: 600;
-        }
-
-        .list-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-top: 10px;
-            font-size: 13px;
-            color: var(--md-sys-color-on-surface-variant);
-        }
-
-        .list-item .material-symbols-outlined {
-            color: var(--md-sys-color-primary);
-            font-size: 18px;
-            margin-top: 2px;
-        }
-
-        /* Contact Box */
-        .contact-box {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 12px;
-            padding: 10px 16px;
-            background-color: var(--md-sys-color-surface-container);
-            border-radius: 12px;
-            border: 1px solid var(--md-sys-color-outline);
-        }
-
-        .contact-email {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--md-sys-color-primary);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--md-sys-color-outline);
-            padding: 32px 20px;
-            text-align: center;
-            font-size: 12px;
-            color: var(--md-sys-color-on-surface-variant);
-            margin-top: 40px;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
 </head>
-<body>
+<body class="bg-m3-lightBg dark:bg-m3-darkBg text-m3-lightText dark:text-m3-darkText font-sans antialiased min-h-screen transition-colors duration-300">
 
-    <!-- Header / Top App Bar Component -->
-    <header class="top-app-bar">
-        <div class="container header-content">
-            <div class="header-brand">
-                <a href="/" class="back-button" aria-label="Go Back">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                </a>
-                <div>
-                    <div class="brand-title">Only 5G Tools</div>
-                    <div class="brand-subtitle">Rajan Code Studio</div>
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 m3-glass bg-m3-lightBg/80 dark:bg-m3-darkBg/80 border-b border-m3-lightBorder dark:border-m3-darkBorder px-4 sm:px-8 py-3.5">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="/" class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-m3-lightPrimaryBg dark:bg-m3-darkPrimaryBg text-m3-lightPrimary dark:text-m3-darkPrimary text-xs font-bold hover:opacity-80 transition-all">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>
+                Home
+            </a>
+
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-m3-lightPrimary dark:bg-m3-darkPrimary text-white dark:text-[#381E72] flex items-center justify-center font-bold text-sm shadow-sm">
+                    5G
                 </div>
-            </div>
-            <div class="m3-chip">
-                <span class="material-symbols-outlined">verified_user</span>
-                <span>Privacy Policy</span>
+                <span class="font-bold text-sm tracking-tight hidden sm:inline-block">Only 5G Network Mode</span>
             </div>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="container">
-        
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="m3-chip">
-                <span class="material-symbols-outlined">policy</span>
-                <span>Legal & Privacy Information</span>
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+
+        <!-- Hero Title Section -->
+        <section class="text-center py-6 space-y-3">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-m3-lightPrimaryBg dark:bg-m3-darkPrimaryBg text-m3-lightPrimary dark:text-[#E8DEF8] text-xs font-semibold shadow-sm">
+                <span class="material-symbols-outlined text-base">policy</span>
+                Official Legal Statement
             </div>
-            <h1 class="hero-title">Privacy Policy</h1>
-            <div style="margin-top: 12px;">
-                <div class="m3-chip">
-                    <span class="material-symbols-outlined">calendar_today</span>
-                    <span>Last Updated: July 30, 2026</span>
-                </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
+            <p class="text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext font-medium">
+                Application: <strong class="text-m3-lightText dark:text-m3-darkText">Only 5G Network Mode</strong> • Developer: <strong class="text-m3-lightText dark:text-m3-darkText">Rajan Code Studio</strong>
+            </p>
+            <div class="pt-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-m3-lightSurface dark:bg-m3-darkSurface border border-m3-lightBorder dark:border-m3-darkBorder text-[11px] text-m3-lightSubtext dark:text-m3-darkSubtext">
+                    <span class="material-symbols-outlined text-xs text-m3-lightPrimary dark:text-m3-darkPrimary">event</span>
+                    Last Updated: August 2026
+                </span>
             </div>
         </section>
 
         <!-- Section 1: Overview -->
-        <div class="policy-group">
-            <div class="section-label">
-                <span class="material-symbols-outlined">info</span>
-                <span>Overview</span>
+        <section class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 sm:p-8 rounded-[32px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-m3-lightPrimary dark:text-m3-darkPrimary">
+                <span class="material-symbols-outlined text-xl">info</span>
+                <h2 class="text-xs font-bold tracking-wider uppercase">1. Overview</h2>
             </div>
-            <div class="m3-card">
-                <p class="cardText">
-                    <strong>Only 5G Tools</strong> ("we", "our", or "us") respects your privacy. This Privacy Policy explains how our Android application handles network status monitoring and hidden 5G network settings access. We are committed to transparency and ensuring your personal data remains strictly safe.
-                </p>
-            </div>
-        </div>
+            <p class="text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed">
+                <strong class="text-m3-lightText dark:text-m3-darkText">Rajan Code Studio</strong> ("we", "our", or "us") respects your personal privacy. This Privacy Policy outlines how the <strong>Only 5G Network Mode</strong> application handles operational permissions and device parameters required for network switching. We are committed to complete transparency and zero unnecessary data collection.
+            </p>
+        </section>
 
-        <!-- Section 2: Data Collection -->
-        <div class="policy-group">
-            <div class="section-label">
-                <span class="material-symbols-outlined">shield</span>
-                <span>Data Collection & Storage</span>
+        <!-- Section 2: Data Collection & Storage -->
+        <section class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 sm:p-8 rounded-[32px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm space-y-4">
+            <div class="flex items-center gap-2 text-m3-lightPrimary dark:text-m3-darkPrimary">
+                <span class="material-symbols-outlined text-xl">shield</span>
+                <h2 class="text-xs font-bold tracking-wider uppercase">2. Data Collection & Storage</h2>
             </div>
-            <div class="m3-card">
-                <p class="cardText" style="font-weight: 700; margin-bottom: 12px; color: var(--md-sys-color-on-background);">
-                    We do not collect, store, transmit, or monetize any personal data.
-                </p>
-                <div class="list-item">
-                    <span class="material-symbols-outlined">check_circle</span>
-                    <span>No personal identifiers (Name, Email, Phone Number) are requested or stored.</span>
-                </div>
-                <div class="list-item">
-                    <span class="material-symbols-outlined">check_circle</span>
-                    <span>No network traffic logs or browsing history are monitored or sent to remote servers.</span>
-                </div>
-                <div class="list-item">
-                    <span class="material-symbols-outlined">check_circle</span>
-                    <span>All network status calculations happen 100% locally on your Android device.</span>
-                </div>
-            </div>
-        </div>
+            
+            <p class="text-xs sm:text-sm font-semibold text-m3-lightText dark:text-m3-darkText">
+                We do NOT collect, store, transmit, or share any personal user data.
+            </p>
 
-        <!-- Section 3: Permissions -->
-        <div class="policy-group">
-            <div class="section-label">
-                <span class="material-symbols-outlined">lock</span>
-                <span>Permissions Explained</span>
-            </div>
-            <div class="m3-card">
-                <p class="cardText">
-                    Our application requests specific system permissions strictly required for core operational functions:
-                </p>
+            <ul class="space-y-2.5 pt-1">
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed">
+                    <span class="material-symbols-outlined text-emerald-500 text-base shrink-0 mt-0.5">check_circle</span>
+                    <span><strong>No Identifiers:</strong> Names, phone numbers, email addresses, or IMEI numbers are never accessed or stored.</span>
+                </li>
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed">
+                    <span class="material-symbols-outlined text-emerald-500 text-base shrink-0 mt-0.5">check_circle</span>
+                    <span><strong>No Traffic Tracking:</strong> Your internet browsing activity, web traffic logs, and DNS queries remain strictly private and unmonitored.</span>
+                </li>
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed">
+                    <span class="material-symbols-outlined text-emerald-500 text-base shrink-0 mt-0.5">check_circle</span>
+                    <span><strong>Local Processing:</strong> All network diagnostics and band evaluations run 100% locally on your Android device.</span>
+                </li>
+            </ul>
+        </section>
 
-                <div class="permission-item">
-                    <div class="permission-header">
-                        <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">wifi</span>
-                        <div class="permission-title">Network & Wi-Fi Access</div>
+        <!-- Section 3: App Permissions Explained -->
+        <section class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 sm:p-8 rounded-[32px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm space-y-4">
+            <div class="flex items-center gap-2 text-m3-lightPrimary dark:text-m3-darkPrimary">
+                <span class="material-symbols-outlined text-xl">lock</span>
+                <h2 class="text-xs font-bold tracking-wider uppercase">3. Android System Permissions</h2>
+            </div>
+
+            <p class="text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed">
+                To perform core network switching and display accurate cellular signal statistics, our application requests specific Android system permissions:
+            </p>
+
+            <div class="space-y-3 pt-1">
+                <!-- Permission 1 -->
+                <div class="p-4 rounded-2xl bg-m3-lightPrimaryBg/30 dark:bg-m3-darkPrimaryBg/30 border border-m3-lightBorder dark:border-m3-darkBorder space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-m3-lightPrimary dark:text-m3-darkPrimary text-base">wifi</span>
+                        <h3 class="text-xs font-bold text-m3-lightText dark:text-m3-darkText">Network & Wi-Fi State</h3>
                     </div>
-                    <p class="cardText">
-                        <span class="code-badge">INTERNET, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE</span>
-                        Used to detect real-time internet connectivity, Wi-Fi SSID, and active network types (4G / 5G / Wi-Fi).
+                    <p class="text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">
+                        <code class="bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded text-[11px] font-mono text-m3-lightPrimary dark:text-m3-darkPrimary">INTERNET</code>, 
+                        <code class="bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded text-[11px] font-mono text-m3-lightPrimary dark:text-m3-darkPrimary">ACCESS_NETWORK_STATE</code>: Required to detect internet connectivity and active network types (4G / 5G / Wi-Fi).
                     </p>
                 </div>
 
-                <div class="permission-item">
-                    <div class="permission-header">
-                        <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">signal_cellular_alt</span>
-                        <div class="permission-title">Cellular & SIM State</div>
+                <!-- Permission 2 -->
+                <div class="p-4 rounded-2xl bg-m3-lightPrimaryBg/30 dark:bg-m3-darkPrimaryBg/30 border border-m3-lightBorder dark:border-m3-darkBorder space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-m3-lightPrimary dark:text-m3-darkPrimary text-base">signal_cellular_alt</span>
+                        <h3 class="text-xs font-bold text-m3-lightText dark:text-m3-darkText">Cellular & SIM State</h3>
                     </div>
-                    <p class="cardText">
-                        <span class="code-badge">READ_PHONE_STATE, READ_BASIC_PHONE_STATE</span>
-                        Required to read mobile signal strength levels (5-bar indicator) and carrier names (e.g., Jio 5G, Airtel 5G).
+                    <p class="text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">
+                        <code class="bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded text-[11px] font-mono text-m3-lightPrimary dark:text-m3-darkPrimary">READ_PHONE_STATE</code>: Required to display mobile carrier name (e.g., Jio 5G, Airtel 5G) and current signal strength levels.
                     </p>
                 </div>
 
-                <div class="permission-item">
-                    <div class="permission-header">
-                        <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">location_on</span>
-                        <div class="permission-title">Location Access</div>
+                <!-- Permission 3 -->
+                <div class="p-4 rounded-2xl bg-m3-lightPrimaryBg/30 dark:bg-m3-darkPrimaryBg/30 border border-m3-lightBorder dark:border-m3-darkBorder space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-m3-lightPrimary dark:text-m3-darkPrimary text-base">location_on</span>
+                        <h3 class="text-xs font-bold text-m3-lightText dark:text-m3-darkText">Location Permission</h3>
                     </div>
-                    <p class="cardText">
-                        <span class="code-badge">ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION</span>
-                        Android system architecture mandates location permission to read cell tower information and Wi-Fi network names. We NEVER record or track your physical GPS location.
+                    <p class="text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">
+                        <code class="bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded text-[11px] font-mono text-m3-lightPrimary dark:text-m3-darkPrimary">ACCESS_FINE_LOCATION</code>: Mandated by Android system architecture to read cell tower information and Wi-Fi SSID details. We <strong>never</strong> log or track your GPS location.
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Section 4: Third-Party -->
-        <div class="policy-group">
-            <div class="section-label">
-                <span class="material-symbols-outlined">extension</span>
-                <span>Third-Party Services</span>
+        <!-- Section 4: Third-Party SDKs -->
+        <section class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 sm:p-8 rounded-[32px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-m3-lightPrimary dark:text-m3-darkPrimary">
+                <span class="material-symbols-outlined text-xl">extension</span>
+                <h2 class="text-xs font-bold tracking-wider uppercase">4. Third-Party Services</h2>
             </div>
-            <div class="m3-card">
-                <p class="cardText">
-                    Our application does not integrate third-party data tracking, user profiling, or intrusive advertising SDKs. Your operational usage remains completely private to your local device session.
-                </p>
-            </div>
-        </div>
+            <p class="text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed">
+                This application does not integrate intrusive third-party data tracking, user profiling, or invasive ad networks. Operational sessions remain completely private to your local device.
+            </p>
+        </section>
 
-        <!-- Section 5: Contact -->
-        <div class="policy-group">
-            <div class="section-label">
-                <span class="material-symbols-outlined">mail</span>
-                <span>Contact & Inquiries</span>
+        <!-- Section 5: Contact & Developer Inquiries -->
+        <section class="bg-m3-lightSurface dark:bg-m3-darkSurface p-6 sm:p-8 rounded-[32px] border border-m3-lightBorder dark:border-m3-darkBorder shadow-sm space-y-4">
+            <div class="flex items-center gap-2 text-m3-lightPrimary dark:text-m3-darkPrimary">
+                <span class="material-symbols-outlined text-xl">mail</span>
+                <h2 class="text-xs font-bold tracking-wider uppercase">5. Contact & Support</h2>
             </div>
-            <div class="m3-card">
-                <p class="cardText">
-                    If you have any questions or concerns regarding this Privacy Policy, feel free to contact us:
-                </p>
-                <div class="contact-box">
-                    <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">alternate_email</span>
-                    <span class="contact-email">rajancodestudio@gmail.com</span>
-                </div>
-            </div>
-        </div>
+            <p class="text-xs sm:text-sm text-m3-lightSubtext dark:text-m3-darkSubtext leading-relaxed">
+                If you have any questions, bug reports, or privacy inquiries regarding <strong>Only 5G Network Mode</strong>, feel free to reach out to our official developer email:
+            </p>
+
+            <a href="mailto:rajancodestudio@gmail.com" class="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-m3-lightPrimaryBg/50 dark:bg-m3-darkPrimaryBg/50 border border-m3-lightBorder dark:border-m3-darkBorder text-m3-lightPrimary dark:text-m3-darkPrimary font-bold text-xs sm:text-sm hover:opacity-80 transition-all">
+                <span class="material-symbols-outlined text-lg">alternate_email</span>
+                rajancodestudio@gmail.com
+            </a>
+        </section>
 
     </main>
 
-    <!-- Footer Component -->
-    <footer>
-        <div class="container">
-            <p>© 2026 Rajan Code Studio. Designed using Official Google Material 3 Token Systems.</p>
+    <!-- Footer Section -->
+    <footer class="border-t border-m3-lightBorder dark:border-m3-darkBorder py-10 mt-16 px-4 sm:px-8 bg-m3-lightSurface/50 dark:bg-m3-darkSurface/50">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-m3-lightSubtext dark:text-m3-darkSubtext">
+            <div>
+                <p class="font-semibold text-m3-lightText dark:text-m3-darkText">© 2026 Rajan Code Studio. All rights reserved.</p>
+                <p class="mt-0.5">Designed according to Google Material 3 Guidelines.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/" class="hover:underline">Home Showcase</a>
+                <span>•</span>
+                <a href="mailto:rajancodestudio@gmail.com" class="hover:underline">Contact</a>
+            </div>
         </div>
     </footer>
 
-    <!-- Google Web Standard Engine (Pure JS / TypeScript Compiled Output) -->
+    <!-- Vanilla JS Engine -->
     <script>
-        // Google Standard Native Theme Synchronizer (System Light/Dark Detection)
-        (function initGoogleM3Engine() {
-            const updateSystemTheme = (e) => {
-                const isDark = e.matches;
-                document.documentElement.classList.toggle('dark', isDark);
-            };
-
-            const darkMediaWatcher = window.matchMedia('(prefers-color-scheme: dark)');
-            updateSystemTheme(darkMediaWatcher);
-            darkMediaWatcher.addEventListener('change', updateSystemTheme);
-        })();
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Only 5G Privacy Policy Loaded - 100% Google Standard');
+        });
     </script>
 </body>
 </html>
