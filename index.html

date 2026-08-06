@@ -46,7 +46,6 @@
     </script>
 
     <style>
-        /* CSS M3 Custom Tokens & Instant Engine Optimizations */
         :root {
             --m3-transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
         }
@@ -153,19 +152,24 @@
 
                 <!-- Download & Policy Buttons -->
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-m3-lightBorder dark:border-m3-darkBorder">
-                    <!-- Google Play Download Button -->
-                    <a href="https://play.google.com/store/apps" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-black dark:bg-white text-white dark:text-black font-semibold text-xs hover:opacity-90 transition-all shadow-md active:scale-95">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L18.81,13.97C19.46,13.59 19.46,12.41 18.81,12.03L16.81,10.88L14.81,12.88L16.81,15.12M4.6,1.41L14.28,11.1L12.28,13.1L2.6,3.41C2.92,3.15 3.33,3 3.75,3C4.06,3 4.36,3.15 4.6,1.41M4.6,22.59C4.36,22.85 4.06,23 3.75,23C3.33,23 2.92,22.85 2.6,22.59L12.28,12.9L14.28,14.9L4.6,22.59Z"/>
+                    
+                    <!-- Official Google Play Store Badge -->
+                    <a href="https://play.google.com/store/apps" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl bg-[#000000] dark:bg-[#000000] text-white border border-[#3c4043] hover:border-[#5f6368] transition-all shadow-md active:scale-95 group">
+                        <!-- Official Multi-Color Google Play Vector Logo -->
+                        <svg class="w-6 h-6 shrink-0" viewBox="0 0 512 512">
+                            <path fill="#0288D1" d="M43.2 27.2C35.2 35.2 30 48.2 30 68.2v375.6c0 20 5.2 33 13.2 41l2.4 2.2L287.8 245v-5.6L45.6 25l-2.4 2.2z"/>
+                            <path fill="#EA4335" d="M368.5 325.7l-80.7-80.7V239.4l80.7-80.7 2.1 1.2 95.8 54.4c27.4 15.6 27.4 41.1 0 56.7l-95.8 54.4-2.1 0.3z"/>
+                            <path fill="#FBBC04" d="M370.6 327l-82.8-82.8L45.6 486.4c9 9.5 23.8 10.4 40.2 1.1l284.8-160.5z"/>
+                            <path fill="#34A853" d="M370.6 185L85.8 24.5C69.4 15.2 54.6 16.1 45.6 25.6L287.8 267.8 370.6 185z"/>
                         </svg>
-                        <div class="text-left leading-tight">
-                            <div class="text-[9px] uppercase tracking-wider opacity-80">Get it on</div>
-                            <div class="text-xs font-bold">Google Play</div>
+                        <div class="text-left leading-none">
+                            <div class="text-[9px] font-semibold uppercase tracking-wider text-gray-300">GET IT ON</div>
+                            <div class="text-sm font-bold text-white mt-1 tracking-tight">Google Play</div>
                         </div>
                     </a>
 
                     <!-- Privacy Policy Button -->
-                    <a href="/only-5g" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full border border-m3-lightBorder dark:border-m3-darkBorder text-m3-lightPrimary dark:text-m3-darkPrimary font-medium text-xs hover:bg-m3-lightPrimaryBg/30 dark:hover:bg-m3-darkPrimaryBg/30 transition-all">
+                    <a href="/only-5g" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl border border-m3-lightBorder dark:border-m3-darkBorder text-m3-lightPrimary dark:text-m3-darkPrimary font-medium text-xs hover:bg-m3-lightPrimaryBg/30 dark:hover:bg-m3-darkPrimaryBg/30 transition-all">
                         <span class="material-symbols-outlined text-base">policy</span>
                         Privacy Policy
                     </a>
@@ -283,9 +287,8 @@
         </div>
     </footer>
 
-    <!-- Vanilla JS Engine for Instant Interactive Performance -->
+    <!-- Vanilla JS Engine -->
     <script>
-        // Performance Optimized Vanilla Engine
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Rajan Code Studio Engine Loaded - 100% Google Standard');
         });
